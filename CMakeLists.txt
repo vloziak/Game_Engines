@@ -1,12 +1,16 @@
-cmake_minimum_required(VERSION 3.16)
-project(GameEnginesAssignment1)
+cmake_minimum_required(VERSION 3.31)
+project(game)
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 26)
 
-find_package(SFML 3 REQUIRED COMPONENTS Graphics)
+find_package(SFML 3 REQUIRED COMPONENTS Graphics Window System)
 
-find_package(glm REQUIRED)
-
-add_executable(assignment1 main.cpp)
-
-target_link_libraries(assignment1 SFML::Graphics glm::glm)
+add_executable(game
+    main.cpp
+    src/Game.cpp
+    src/Button.cpp
+    src/Player.cpp
+    src/Food.cpp
+)
+target_include_directories(game PRIVATE src)
+target_link_libraries(game SFML::Graphics SFML::Window SFML::System)
